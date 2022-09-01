@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Thanks Page {% endblock %}
+
+{% block content %}
+
+<h1>Thanks for completing this survey!</h1>
+
+<p>We recorded the following responses for you:</p>
+<ul>
+  {% for question in survey.questions %}
+  <li>
+    <b>{{ question.question }}:</b>
+
+    <!-- The counter variable inside the loop is called loop.index in Jinja2. -->
+    <!-- loop.index0 (index starting at 0) -->
+    {{ responses[loop.index0]["choice"] }}
+    <br>
+    <i>{{ responses[loop.index0]["text"] }}</i>
+
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
